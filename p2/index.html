@@ -1,0 +1,516 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Byegone| Tattoo Artist</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #111;
+      color: #f5f5f5;
+      font-family: italic;
+      line-height: 1.6;
+    }
+
+    header {
+      background: #080808;
+      padding: 20px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 1px solid #292929;
+    }
+
+    .logo {
+      font-family: italic;
+      font-size: 28px;
+      color: #e68d39;
+      letter-spacing: 2px;
+    }
+
+    nav a {
+      color:dodgerblue;
+      text-decoration: none;
+      margin-left: 22px;
+      font-size: 14px;
+    }
+
+    nav a:hover {
+      color: #e63946;
+    }
+
+    .hero {
+      min-height: 85vh;
+      display: flex;
+      align-items: center;
+      padding: 80px 8%;
+      background:
+        linear-gradient(90deg, #090909 10%, #090909d9 48%, #09090955),
+        url("https://images.unsplash.com/photo-1598371839696-5c5bb00bdc28?auto=format&fit=crop&w=1600&q=85")
+        center/cover;
+    }
+
+    .hero-content {
+      max-width: 650px;
+    }
+
+    .eyebrow {
+      color: #e63946;
+      letter-spacing: 4px;
+      font-size: 13px;
+      text-transform: uppercase;
+    }
+
+    h1, h2, h3 {
+      font-family: champagne script;
+      text-transform: uppercase;
+      line-height: 1.15;
+    }
+
+    h1 {
+      font-size: clamp(48px, 8vw, 88px);
+      margin: 18px 0;
+    }
+
+    h1 span {
+      color: #e63946;
+    }
+
+    .hero p {
+      color: #d0d0d0;
+      max-width: 500px;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #e63946;
+      color: white;
+      padding: 13px 25px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #b92330;
+      transform: translateY(-2px);
+    }
+
+    section {
+      padding: 80px 8%;
+    }
+
+    .section-title {
+      font-size: 42px;
+      margin-bottom: 15px;
+    }
+
+    .section-intro {
+      color: #aaa;
+      max-width: 650px;
+      margin-bottom: 35px;
+    }
+
+    .services {
+      background: #181818;
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .service-card {
+      background: #222;
+      border: 1px solid #333;
+      padding: 28px;
+      transition: 0.3s;
+    }
+
+    .service-card:hover {
+      border-color: #e63946;
+      transform: translateY(-5px);
+    }
+
+    .service-card h3 {
+      color: #e63946;
+      font-size: 23px;
+      margin-bottom: 12px;
+    }
+
+    .service-card p {
+      color: #bbb;
+      font-size: 14px;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 18px;
+    }
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      background: #222;
+    }
+
+    .gallery-item img {
+      display: block;
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      transition: transform 0.4s;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.06);
+    }
+
+    .gallery-item p {
+      padding: 15px;
+      font-family: 'Oswald', sans-serif;
+      font-size: 19px;
+    }
+
+    .about {
+      background: #181818;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      align-items: center;
+      gap: 40px;
+    }
+
+    .about img {
+      width: 100%;
+      max-height: 440px;
+      object-fit: cover;
+    }
+
+    .about p {
+      color: #bbb;
+      margin: 18px 0;
+    }
+
+    .booking {
+      background: #0b0b0b;
+    }
+
+    .booking-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+
+    .contact-info p {
+      color: #bbb;
+      margin: 14px 0;
+    }
+
+    form {
+      display: grid;
+      gap: 14px;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 14px;
+      background: #1d1d1d;
+      color: white;
+      border: 1px solid #444;
+      font: inherit;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      outline: 1px solid #e63946;
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .message {
+      color: #9be7a5;
+      font-size: 14px;
+    }
+
+    footer {
+      background: #050505;
+      text-align: center;
+      padding: 25px 8%;
+      color: #888;
+      font-size: 13px;
+    }
+
+    footer a {
+      color: #e63946;
+      text-decoration: none;
+    }
+
+    @media (max-width: 700px) {
+      header {
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      nav {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      nav a {
+        margin: 0;
+      }
+
+      .hero {
+        min-height: 70vh;
+        padding: 60px 7%;
+      }
+
+      section {
+        padding: 60px 7%;
+      }
+
+      .booking-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">BYEGONE'S INK STUDIO</div>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#services">Styles</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#about">Artist</a>
+      <a href="#booking">Book</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <div class="eyebrow">Art that stays with you</div>
+        <h1>YOUR SKIN.<br>YOUR STORY.<br><span>YOUR INK.</span></h1>
+        <p>
+          Custom tattoo designs created with creativity, precision,
+          and attention to every detail. Bring your idea to life.
+        </p>
+        <a href="#booking" class="btn">BOOK A CONSULTATION</a>
+      </div>
+    </section>
+
+    <section class="services" id="services">
+      <div class="eyebrow">What I do</div>
+      <h2 class="section-title">Tattoo Styles</h2>
+      <p class="section-intro">
+        From small meaningful symbols to detailed custom artwork,
+        choose a style that tells your story.
+      </p>
+
+      <div class="service-grid">
+        <div class="service-card">
+          <h3>Fine Line</h3>
+          <p>Delicate designs, subtle symbols, and clean linework.</p>
+        </div>
+        <div class="service-card">
+          <h3>Blackwork</h3>
+          <p>Bold black designs with striking shapes and contrast.</p>
+        </div>
+        <div class="service-card">
+          <h3>Realism</h3>
+          <p>Detailed portraits and realistic artistic compositions.</p>
+        </div>
+        <div class="service-card">
+          <h3>Custom Ink</h3>
+          <p>Personalized artwork designed around your own idea;cartoons,anime,cars and symbols of your choice.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery">
+      <div class="eyebrow">Selected artwork</div>
+      <h2 class="section-title">The Portfolio</h2>
+      <p class="section-intro">
+        Explore the work and discover a style that inspires you.
+        Replace these sample photos with your own tattoo work.
+      </p>
+
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1565058379802-bbe93b2f703a?auto=format&fit=crop&w=700&q=80"
+               alt="Tattoo artwork" loading="lazy">
+          <p>Custom Artwork</p>
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1590246814883-57c511e9f8c2?auto=format&fit=crop&w=700&q=80"
+               alt="Tattoo artist portfolio" loading="lazy">
+          <p>Blackwork</p>
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.file:///C:/Users/Alvin/Desktop/new001/HTML/rosetattoo.jpeg"
+               alt="Tattoo design" loading="lazy">
+          <p>Fine Line</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <img
+        src="https://images.unsplash.com/photo-1619451334792-150fd785ee74?auto=format&fit=crop&w=900&q=85"
+        alt="Tattoo studio artwork"
+        loading="lazy">
+
+      <div>
+        <div class="eyebrow">Meet the artist</div>
+        <h2 class="section-title">Art With Meaning</h2>
+        <p>
+          Welcome to Byegones Ink Studio. I create personalized tattoo designs
+          that reflect each client's ideas, memories, and personality.
+        </p>
+        <p>
+          Every appointment begins with a conversation about your
+          concept, preferred style, placement, and design.
+        </p>
+        <a href="#booking" class="btn">LET'S CREATE</a>
+      </div>
+    </section>
+
+    <section class="booking" id="booking">
+      <div class="eyebrow">Start your next piece</div>
+      <h2 class="section-title">Book a Consultation</h2>
+      <p class="section-intro">
+        Tell me about your idea. I'll use your details to prepare
+        a booking inquiry for you.
+      </p>
+
+      <div class="booking-layout">
+        <div class="contact-info">
+          <h3>Get In Touch</h3>
+          <p><strong>Artist:</strong> Byegon kibet</p>
+          <p><strong>Location:</strong> Nakuru, Kenya</p>
+          <p><strong>Phone:</strong> +254 769914992</p>
+          <p><strong>Instagram:</strong> @_destroy.lwk_</p>
+          <p><strong>TikTok:</strong> @byegon.ink.studios</p>
+          <p>Appointments are subject to confirmation.</p>
+        </div>
+
+        <form id="bookingForm">
+          <input type="text" id="name" placeholder="Your full name" required>
+          <input type="email" id="email" placeholder="Your email address" required>
+          <input type="tel" id="phone" placeholder="Your phone number" required>
+
+          <select id="style" required>
+            <option value="">Choose tattoo style</option>
+            <option>Fine Line</option>
+            <option>Blackwork</option>
+            <option>Realism</option>
+            <option>Custom Design</option>
+            <option>Other</option>
+          </select>
+
+          <input type="text" id="placement" placeholder="Preferred placement (e.g. arm)" required>
+          <textarea id="idea" placeholder="Describe your tattoo idea..." required></textarea>
+
+          <button type="submit" class="btn">PREPARE INQUIRY</button>
+          <p id="formMessage" class="message" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
+    <section class="services">
+      <h2 class="section-title">Tattoo Aftercare</h2>
+      <p class="section-intro">
+        Follow the artist's aftercare instructions;<bold><i> keep your tattoo
+        clean, avoid picking at healing skin, and seek medical advice
+        if you notice signs of infection</i></bold>
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <p>© <span id="year"></span> Byegon Ink Studios. All rights reserved.</p>
+    <p>Follow the journey on <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">Instagram</a></p>
+    <p>and on <a href="https://www.tiktok.com/" target="_blank" rel="noopener noreferrer">TikTok</a> page</p>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+    document.getElementById("bookingForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const phone = document.getElementById("phone").value.trim();
+      const style = document.getElementById("style").value;
+      const placement = document.getElementById("placement").value.trim();
+      const idea = document.getElementById("idea").value.trim();
+
+      if (!name || !email || !style || !placement || !idea) {
+        document.getElementById("formMessage").textContent =
+          "Please complete every field.";
+        return;
+      }
+
+      const message =
+        "Hello, I would like to inquire about a tattoo appointment.\n\n" +
+        "Name: " + name + "\n" +
+        "Email: " + email + "\n" +
+        "Style: " + style + "\n" +
+        "Placement: " + placement + "\n" +
+        "Idea: " + idea;
+
+      const messageBox = document.getElementById("formMessage");
+      messageBox.textContent =
+        "Your inquiry is ready. Copy it below and send it to the artist.";
+
+      const output = document.createElement("textarea");
+      output.readOnly = true;
+      output.value = message;
+      output.setAttribute("aria-label", "Your booking inquiry");
+      output.style.width = "100%";
+      output.style.minHeight = "180px";
+
+      const existing = document.getElementById("inquiryOutput");
+      if (existing) existing.remove();
+
+      output.id = "inquiryOutput";
+      messageBox.insertAdjacentElement("afterend", output);
+      output.focus();
+      output.select();
+    });
+  </script>
+
+</body>
+</html>
